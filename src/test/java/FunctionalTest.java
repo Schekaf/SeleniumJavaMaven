@@ -3,10 +3,13 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class FunctionalTest {
@@ -15,6 +18,8 @@ public class FunctionalTest {
     @BeforeClass
     public static void setUp(){
         driver = new FirefoxDriver();
+
+        driver = new RemoteWebDriver(new URL("https://localhost:"),new FirefoxOptions())
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 

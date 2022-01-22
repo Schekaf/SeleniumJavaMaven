@@ -9,6 +9,7 @@ import java.io.File;
 public class SearchPCTest extends FunctionalTest{
     @Test
     public void search4PC(){
+
         driver.get("https://www.gittigidiyor.com/");
         //HomePage homePage = new HomePage(driver);
         WebElement choociee = driver.findElements(By.linkText("Kapat")).get(0);
@@ -36,7 +37,7 @@ public class SearchPCTest extends FunctionalTest{
 
         WebElement addToChart = driver.findElements(By.id("add-to-basket")).get(0);
         new WebDriverWait(driver,20).until(ExpectedConditions.elementToBeClickable(addToChart)).click();
-        
+        //presenceofelementlocated
         WebElement goToChart = driver.findElements(By.cssSelector(".basket-icon-container")).get(0);
         new WebDriverWait(driver,20).until(ExpectedConditions.elementToBeClickable(goToChart)).click();
     }
