@@ -3,6 +3,9 @@ package com.pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
+import java.io.IOException;
+
 public class BasePage {
     protected WebDriver driver;
     public BasePage(WebDriver driver){
@@ -12,5 +15,7 @@ public class BasePage {
     public String getTitle(){
         return driver.getTitle();
     }
+
+
 
 }

@@ -3,10 +3,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+
 public class SearchPCTest extends FunctionalTest{
     @Test
     public void search4PC(){
         driver.get("https://www.gittigidiyor.com/");
+        //HomePage homePage = new HomePage(driver);
         WebElement searchBox = driver.findElement(By.name("k"));
         searchBox.clear();
         searchBox.sendKeys("Bilgisayar");
@@ -23,14 +26,11 @@ public class SearchPCTest extends FunctionalTest{
         WebElement product = driver.findElements(By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[3]/ul/li[1]/article/div[2]/a")).get(0);
         driver.get(product.getAttribute("href"));
 
+        WebElement productPrice = driver.findElements(By.id("sp-price-lowPrice")).get(0);
+
+        File priceFile = createFile("priceFile");
 
 
-        //JOptionPane.showMessageDialog(null,randomItem.getText());
 
-
-
-        //HomePage homePage = new HomePage(driver);
-        //homePage.enterSearchText("bilgisayar");
-        //assertEquals("GittiGidiyor - Türkiye'nin Öncü Alışveriş Sitesi",homePage.getTitle());
     }
 }

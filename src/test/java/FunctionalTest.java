@@ -4,6 +4,8 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class FunctionalTest {
@@ -23,5 +25,17 @@ public class FunctionalTest {
     @AfterClass
     public static void tearDown(){
         //driver.close();
+    }
+
+    public File createFile(String fileName){
+        try{
+            File objFile = new File(fileName);
+            assert objFile.createNewFile();
+            return objFile;
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }
