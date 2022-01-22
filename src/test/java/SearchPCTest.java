@@ -20,17 +20,14 @@ public class SearchPCTest extends FunctionalTest{
         WebElement searchSubmit = driver.findElement(By.xpath("/html/body/div[1]/header/div[3]/div/div/div/div[2]/form/div/div[2]/button"));
         searchSubmit.click();
 
-        WebDriverWait wait = new WebDriverWait(driver,20);
-
-
         WebElement navsecondPage = driver.findElements(By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[4]/nav/ul/li[3]/a")).get(0);
-        new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOf(driver.findElements(By.xpath("/html/body/div[4]")).get(0)));
-        navsecondPage.click();
-        //driver.get(navsecondPage.getAttribute("href"));
+        //new WebDriverWait(driver,20).until(ExpectedConditions.elementToBeClickable(driver.findElements(By.cssSelector("li.sc-12aj18f-2:nth-child(3) > a:nth-child(1)")).get(0)));
+        //navsecondPage.click();
+        driver.get(navsecondPage.getAttribute("href"));
 
         WebElement product = driver.findElements(By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div/div[3]/div[3]/ul/li[1]/article/div[2]/a")).get(0);
-        product.click();
-        //driver.get(product.getAttribute("href"));
+        //product.click();
+        driver.get(product.getAttribute("href"));
 
         WebElement productPrice = driver.findElements(By.id("sp-price-lowPrice")).get(0);
 
@@ -38,9 +35,9 @@ public class SearchPCTest extends FunctionalTest{
         writeFile(priceFile,productPrice.getText());
 
         WebElement addToChart = driver.findElements(By.id("add-to-basket")).get(0);
-        new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(addToChart)).click();
-
-
-
+        new WebDriverWait(driver,20).until(ExpectedConditions.elementToBeClickable(addToChart)).click();
+        
+        WebElement goToChart = driver.findElements(By.cssSelector(".basket-icon-container")).get(0);
+        new WebDriverWait(driver,20).until(ExpectedConditions.elementToBeClickable(goToChart)).click();
     }
 }
