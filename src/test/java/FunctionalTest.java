@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -28,14 +29,31 @@ public class FunctionalTest {
     }
 
     public File createFile(String fileName){
+        File objFile = new File(fileName);
         try{
-            File objFile = new File(fileName);
-            assert objFile.createNewFile();
-            return objFile;
+            if (objFile.exists()){
+                assert true;
+            }
+            else {
+                assert objFile.createNewFile();
+            }
         }
         catch (IOException e){
             e.printStackTrace();
-            return null;
+        }
+        finally {
+            return objFile;
+        }
+    }
+
+    public void writeFile(File file, String text){
+        try{
+            FileWriter objWriter = new FileWriter(file);
+            objWriter.write(text);
+            objWriter.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
     }
 }
